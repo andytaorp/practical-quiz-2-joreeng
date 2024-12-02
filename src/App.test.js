@@ -6,17 +6,19 @@ describe("Habit Tracker App", () => {
   // AddHabitForm Tests
   test("adds a new habit", () => {
     render(<App />);
-    const input = screen.getByPlaceholderText(/New Habit/i);
-    const button = screen.getByText(/Add Habit/i);
-
+    const input = screen.getByPlaceholderText("New Habit");
+    const button = screen.getByText("Add Habit");
+  
     fireEvent.change(input, { target: { value: "Exercise" } });
     fireEvent.click(button);
-
-    expect(screen.getByText(/Exercise/i)).toBeInTheDocument();
+  
+    expect(screen.getByText("Exercise")).toBeInTheDocument();
   });
+  
 
   test("prevents adding an empty habit", () => {
     render(<App />);
+    screen.debug()
     const button = screen.getByText(/Add Habit/i);
 
     fireEvent.click(button);
